@@ -1,3 +1,5 @@
+import { product } from "puppeteer";
+
 /**
  * TODO: hozd létre a getProducts ASZINKRON függvénykifejezést!
  * 
@@ -30,7 +32,24 @@
  * @returns {[{}, {}] | []} objektumok tömbjével tér vissza vagy hiba esetén 
  * üres tömbbel
  */
+ const getProducts = async (url = '') => {
+    try {
+        const response = await fetch(url);
+        const products = await response.json();
+        return products
+            .sort((obj1,obj2) => obj1.price - obj2.price)
+            .filter(obj_i => obj_i.price >= 25);
+    }
+    catch(error) {
+        console.error(error);
+        return [];
+    }
+};
 
 /**
  * TODO: exportáld ki helyesen a getProducts függvényt!
  */
+ export {
+    getProducts
+  }
+
