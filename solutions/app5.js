@@ -1,5 +1,3 @@
-import { product } from "puppeteer";
-
 /**
  * TODO: hozd létre a getProducts ASZINKRON függvénykifejezést!
  * 
